@@ -70,7 +70,7 @@ void Print<NullType>() {
 template <class TL>
 class ReaderOneType {
 public:
-    static void ReadOneType(int* block, std::istream &fin) {
+    static void ReadOneType(unsigned char* block, std::istream &fin) {
         auto *tmp = (typename TL::head*)block;
 
         fin >> *tmp;
@@ -81,7 +81,7 @@ public:
 };
 
 template <>
-void ReaderOneType<NullType>::ReadOneType(int* block, std::istream &fin) {
+void ReaderOneType<NullType>::ReadOneType(unsigned char* block, std::istream &fin) {
 
 }
 
@@ -90,7 +90,7 @@ class Reader {
     ReaderOneType<TL> readerOneType;
 public:
     void *readNextLine(std::istream &fin) {
-        auto block = (int*)malloc(Length<TL>::value);
+        auto block = (unsigned char*)malloc(Length<TL>::value);
 
         readerOneType.ReadOneType(block, fin);
         return block;
