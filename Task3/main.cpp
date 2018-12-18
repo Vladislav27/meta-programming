@@ -97,7 +97,7 @@ public:
     }
 };
 
-typedef Typelist<int, Typelist<char, Typelist<double, NullType> > > TL;
+typedef Typelist<int, Typelist<char, Typelist<char, NullType> > > TL;
 
 int main() {
     std::cout << "Typelist: ";
